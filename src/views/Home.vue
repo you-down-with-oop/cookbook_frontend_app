@@ -63,16 +63,19 @@ export default {
         directions: this.directions,
         image_url: this.imageUrl
       };
-      axios.post("/api/recipes", params).then(response => {
-        console.log("Success", response.data);
-        this.recipes.push(response.data);
-        this.title = "";
-        this.chef = "";
-        this.prepTime = "";
-        this.ingredients = "";
-        this.directions = "";
-        this.imageUrl = "";
-      });
+      axios
+        .post("/api/recipes", params)
+        .then(response => {
+          console.log("Success", response.data);
+          this.recipes.push(response.data);
+          this.title = "";
+          this.chef = "";
+          this.prepTime = "";
+          this.ingredients = "";
+          this.directions = "";
+          this.imageUrl = "";
+        })
+        .catch(error => console.log(error.response));
     }
   }
 };
