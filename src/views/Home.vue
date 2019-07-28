@@ -1,6 +1,18 @@
 <template>
   <div class="home">
     <h1>New Recipe</h1>
+    Title:
+    <input v-model="title" type="text" />
+    Chef:
+    <input v-model="chef" type="text" />
+    Prep time:
+    <input v-model="prepTime" type="text" />
+    Ingredients:
+    <input v-model="ingredients" type="text" />
+    Directions:
+    <input v-model="directions" type="text" />
+    Image url:
+    <input v-model="imageUrl" type="text" />
     <button v-on:click="createRecipe()">Create</button>
     <h1>{{ message }}</h1>
     <div v-for="recipe in recipes">
@@ -25,7 +37,13 @@ export default {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
-      recipes: []
+      recipes: [],
+      title: "",
+      chef: "",
+      prepTime: "",
+      ingredients: "",
+      directions: "",
+      imageUrl: ""
     };
   },
   created: function() {
@@ -38,16 +56,22 @@ export default {
     createRecipe: function() {
       console.log("Create the recipe...");
       var params = {
-        title: "THE Example title",
-        chef: "Example chef",
-        prep_time: 100,
-        ingredients: "Example ingredients",
-        directions: "Example directions",
-        image_url: "example image_url"
+        title: this.title,
+        chef: this.chef,
+        prep_time: this.prepTime,
+        ingredients: this.ingredients,
+        directions: this.directions,
+        image_url: this.imageUrl
       };
       axios.post("/api/recipes", params).then(response => {
         console.log("Success", response.data);
         this.recipes.push(response.data);
+        this.title = "";
+        this.chef = "";
+        this.prepTime = "";
+        this.ingredients = "";
+        this.directions = "";
+        this.imageUrl = "";
       });
     }
   }
