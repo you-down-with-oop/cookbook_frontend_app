@@ -18,8 +18,14 @@
     <div v-for="recipe in recipes">
       <h2>{{ recipe.title }}</h2>
       <img v-bind:src="recipe.image_url" alt="" />
-      <p>Ingredients: {{ recipe.ingredients }}</p>
-      <p>Directions: {{ recipe.directions }}</p>
+      <div>
+        <button v-on:click="currentRecipe = recipe">More info</button>
+      </div>
+      <div v-if="recipe === currentRecipe">
+        <p>Ingredients: {{ recipe.ingredients }}</p>
+        <p>Directions: {{ recipe.directions }}</p>
+        <p>Prep time: {{ recipe.prep_time }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +44,7 @@ export default {
     return {
       message: "Welcome to Vue.js!",
       recipes: [],
+      currentRecipe: {},
       title: "",
       chef: "",
       prepTime: "",
