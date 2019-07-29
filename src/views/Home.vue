@@ -19,7 +19,7 @@
       <h2>{{ recipe.title }}</h2>
       <img v-bind:src="recipe.image_url" alt="" />
       <div>
-        <button v-on:click="currentRecipe = recipe">More info</button>
+        <button v-on:click="showRecipe(recipe)">More info</button>
       </div>
       <div v-if="recipe === currentRecipe">
         <p>Ingredients: {{ recipe.ingredients }}</p>
@@ -83,6 +83,13 @@ export default {
           this.imageUrl = "";
         })
         .catch(error => console.log(error.response));
+    },
+    showRecipe: function(inputRecipe) {
+      if (this.currentRecipe === inputRecipe) {
+        this.currentRecipe = {};
+      } else {
+        this.currentRecipe = inputRecipe;
+      }
     }
   }
 };
