@@ -39,6 +39,7 @@
           <input v-model="recipe.directions" type="text" />
           <button v-on:click="updateRecipe(recipe)">Update</button>
         </div>
+        <button v-on:click="destroyRecipe(recipe)">Destroy recipe</button>
       </div>
     </div>
   </div>
@@ -120,6 +121,13 @@ export default {
         inputRecipe.prep_time = response.data.prep_time;
         inputRecipe.ingredients = response.data.ingredients;
         inputRecipe.directions = response.data.directions;
+      });
+    },
+    destroyRecipe: function(inputRecipe) {
+      axios.delete("/api/recipes/" + inputRecipe.id).then(response => {
+        console.log("Delete successful", response.data);
+        var index = this.recipes.indexOf(inputRecipe);
+        this.recipes.splice(index, 1);
       });
     }
   }
