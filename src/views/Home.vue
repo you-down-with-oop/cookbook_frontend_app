@@ -113,7 +113,7 @@ export default {
         ingredients: inputRecipe.ingredients,
         directions: inputRecipe.directions
       };
-      axios.patch("/api/recipes/" + inputRecipe.id).then(response => {
+      axios.patch("/api/recipes/" + inputRecipe.id, params).then(response => {
         console.log("Update successful", response.data);
         inputRecipe.title = response.data.title;
         inputRecipe.chef = response.data.chef;
