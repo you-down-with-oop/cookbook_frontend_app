@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container home">
     <h1>New Recipe</h1>
     Title:
     <input v-model="title" type="text" />
