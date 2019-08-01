@@ -1,19 +1,5 @@
 <template>
   <div class="container home">
-    <h1>New Recipe</h1>
-    Title:
-    <input v-model="title" type="text" />
-    Chef:
-    <input v-model="chef" type="text" />
-    Prep time:
-    <input v-model="prepTime" type="text" />
-    Ingredients:
-    <input v-model="ingredients" type="text" />
-    Directions:
-    <input v-model="directions" type="text" />
-    Image url:
-    <input v-model="imageUrl" type="text" />
-    <button v-on:click="createRecipe()">Create</button>
     <h1>{{ message }}</h1>
     <div v-for="recipe in recipes">
       <h2>{{ recipe.title }}</h2>
@@ -59,13 +45,7 @@ export default {
     return {
       message: "Welcome to Vue.js!",
       recipes: [],
-      currentRecipe: {},
-      title: "",
-      chef: "",
-      prepTime: "",
-      ingredients: "",
-      directions: "",
-      imageUrl: ""
+      currentRecipe: {}
     };
   },
   created: function() {
@@ -75,30 +55,6 @@ export default {
     });
   },
   methods: {
-    createRecipe: function() {
-      console.log("Create the recipe...");
-      var params = {
-        title: this.title,
-        chef: this.chef,
-        prep_time: this.prepTime,
-        ingredients: this.ingredients,
-        directions: this.directions,
-        image_url: this.imageUrl
-      };
-      axios
-        .post("/api/recipes", params)
-        .then(response => {
-          console.log("Success", response.data);
-          this.recipes.push(response.data);
-          this.title = "";
-          this.chef = "";
-          this.prepTime = "";
-          this.ingredients = "";
-          this.directions = "";
-          this.imageUrl = "";
-        })
-        .catch(error => console.log(error.response));
-    },
     showRecipe: function(inputRecipe) {
       if (this.currentRecipe === inputRecipe) {
         this.currentRecipe = {};
