@@ -4,7 +4,8 @@
     <div v-for="recipe in recipes">
       <h2>{{ recipe.title }}</h2>
       <img v-bind:src="recipe.image_url" alt="" />
-      <div>
+      <router-link v-bind:to="`/recipes/${recipe.id}`">More info</router-link>
+      <!-- <div>
         <button v-on:click="showRecipe(recipe)">More info</button>
       </div>
       <div v-if="recipe === currentRecipe">
@@ -26,7 +27,7 @@
           <button v-on:click="updateRecipe(recipe)">Update</button>
         </div>
         <button v-on:click="destroyRecipe(recipe)">Destroy recipe</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -44,8 +45,7 @@ export default {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
-      recipes: [],
-      currentRecipe: {}
+      recipes: []
     };
   },
   created: function() {
@@ -55,13 +55,6 @@ export default {
     });
   },
   methods: {
-    showRecipe: function(inputRecipe) {
-      if (this.currentRecipe === inputRecipe) {
-        this.currentRecipe = {};
-      } else {
-        this.currentRecipe = inputRecipe;
-      }
-    },
     updateRecipe: function(inputRecipe) {
       var params = {
         title: inputRecipe.title,
