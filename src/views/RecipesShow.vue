@@ -5,6 +5,7 @@
     <p>Ingredients: {{ recipe.ingredients }}</p>
     <p>Directions: {{ recipe.directions }}</p>
     <p>Prep time: {{ recipe.prep_time }}</p>
+    <router-link v-bind:to="`/recipes/${recipe.id}/edit`">Edit recipe</router-link>
     <router-link to="/">Back to all recipes</router-link>
   </div>
 </template>

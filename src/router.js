@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import RecipesNew from "./views/RecipesNew.vue";
 import RecipesShow from "./views/RecipesShow.vue";
+import RecipesEdit from "./views/RecipesEdit.vue";
 import Test from "./views/Test.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
@@ -56,6 +57,11 @@ export default new Router({
       path: "/recipes/:id",
       name: "recipes-show",
       component: RecipesShow
+    },
+    {
+      path: "/recipes/:id/edit",
+      name: "recipes-edit",
+      component: RecipesEdit
     }
   ]
 });
