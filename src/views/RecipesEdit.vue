@@ -47,7 +47,7 @@ export default {
         directions: inputRecipe.directions
       };
       axios.patch("/api/recipes/" + inputRecipe.id, params).then(response => {
-        this.$router.push("/");
+        this.$router.push("/recipes");
       });
     }
   }

@@ -34,7 +34,7 @@ export default {
   methods: {
     destroyRecipe: function(recipe) {
       axios.delete("/api/recipes/" + recipe.id).then(response => {
-        this.$router.push("/");
+        this.$router.push("/recipes");
       });
     }
   }

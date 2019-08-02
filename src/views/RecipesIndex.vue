@@ -31,14 +31,6 @@ export default {
       console.log(this.recipes);
     });
   },
-  methods: {
-    destroyRecipe: function(inputRecipe) {
-      axios.delete("/api/recipes/" + inputRecipe.id).then(response => {
-        console.log("Delete successful", response.data);
-        var index = this.recipes.indexOf(inputRecipe);
-        this.recipes.splice(index, 1);
-      });
-    }
-  }
+  methods: {}
 };
 </script>

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import RecipesIndex from "./views/RecipesIndex.vue";
 import RecipesNew from "./views/RecipesNew.vue";
 import RecipesShow from "./views/RecipesShow.vue";
 import RecipesEdit from "./views/RecipesEdit.vue";
@@ -17,8 +17,8 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "recipes-index",
+      component: RecipesIndex
     },
     {
       path: "/about",
@@ -47,6 +47,11 @@ export default new Router({
       path: "/logout",
       name: "logout",
       component: Logout
+    },
+    {
+      path: "/recipes",
+      name: "recipes-index",
+      component: RecipesIndex
     },
     {
       path: "/recipes/new",

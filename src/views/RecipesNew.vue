@@ -48,7 +48,7 @@ export default {
         .post("/api/recipes", params)
         .then(response => {
           console.log("Success", response.data);
-          this.$router.push("/");
+          this.$router.push("/recipes");
         })
         .catch(error => console.log(error.response));
     }
