@@ -12,7 +12,7 @@
     </datalist>
     <div class="row">
       <div v-for="recipe in orderBy(filterBy(recipes, searchFilter, 'title'), sortAttribute)" class="col-sm-4">
-        <div class="card">
+        <div class="card" v-bind:class="{ selected: recipe === currentRecipe }" v-on:click="currentRecipe = recipe">
           <img v-bind:src="recipe.image_url" class="card-img-top" alt="..." />
           <div class="card-body">
             <h2 class="card-title">{{ recipe.title }}</h2>
@@ -33,6 +33,11 @@ img {
 .card {
   margin-bottom: 2rem;
 }
+.selected {
+  color: white;
+  background-color: steelBlue;
+  transition: background-color 1s ease;
+}
 </style>
 
 <script>
@@ -46,7 +51,8 @@ export default {
       message: "Welcome to Vue.js!",
       recipes: [],
       searchFilter: "",
-      sortAttribute: "title"
+      sortAttribute: "title",
+      currentRecipe: {}
     };
   },
   created: function() {
