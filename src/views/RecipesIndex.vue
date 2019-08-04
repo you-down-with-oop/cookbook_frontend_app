@@ -1,10 +1,16 @@
 <template>
   <div class="container home">
-    <h1>{{ message }}</h1>
-    <div v-for="recipe in recipes">
-      <h2>{{ recipe.title }}</h2>
-      <img v-bind:src="recipe.image_url" alt="" />
-      <router-link v-bind:to="`/recipes/${recipe.id}`">More info</router-link>
+    <div class="row">
+      <div v-for="recipe in recipes" class="col-sm-4">
+        <div class="card">
+          <img v-bind:src="recipe.image_url" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h2 class="card-title">{{ recipe.title }}</h2>
+            <p>by {{ recipe.chef }}</p>
+            <router-link v-bind:to="`/recipes/${recipe.id}`">More info</router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -12,6 +18,9 @@
 <style>
 img {
   width: 100%;
+}
+.card {
+  margin-bottom: 2rem;
 }
 </style>
 
