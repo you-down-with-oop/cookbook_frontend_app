@@ -1,7 +1,10 @@
 <template>
   <div class="container home">
     Search:
-    <input v-model="searchFilter" type="text" />
+    <input v-model="searchFilter" type="text" list="titles" />
+    <datalist id="titles">
+      <option v-for="recipe in recipes">{{ recipe.title }}</option>
+    </datalist>
     <div class="row">
       <div v-for="recipe in filterBy(recipes, searchFilter, 'title', 'chef')" class="col-sm-4">
         <div class="card">
