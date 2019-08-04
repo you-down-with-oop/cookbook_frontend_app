@@ -1,7 +1,9 @@
 <template>
   <div class="container home">
+    Search:
+    <input v-model="searchFilter" type="text" />
     <div class="row">
-      <div v-for="recipe in recipes" class="col-sm-4">
+      <div v-for="recipe in filterBy(recipes, searchFilter, 'title', 'chef')" class="col-sm-4">
         <div class="card">
           <img v-bind:src="recipe.image_url" class="card-img-top" alt="..." />
           <div class="card-body">
@@ -26,12 +28,15 @@ img {
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       message: "Welcome to Vue.js!",
-      recipes: []
+      recipes: [],
+      searchFilter: ""
     };
   },
   created: function() {
