@@ -22,13 +22,13 @@
           <li class="nav-item">
             <router-link to="/recipes/new" class="nav-link">New Recipe</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!jwt">
             <router-link to="/signup" class="nav-link">Signup</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!jwt">
             <router-link to="/login" class="nav-link">Login</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="jwt">
             <router-link to="/logout" class="nav-link">Logout</router-link>
           </li>
         </ul>
@@ -38,9 +38,27 @@
         </form>
       </div>
     </nav>
-    <router-view />
+    <router-view v-on:changeJwt="setJwt()" />
   </div>
 </template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      jwt: null
+    };
+  },
+  created: function() {
+    this.setJwt();
+  },
+  methods: {
+    setJwt: function() {
+      this.jwt = localStorage.getItem("jwt");
+    }
+  }
+};
+</script>
 
 <style>
 body {
